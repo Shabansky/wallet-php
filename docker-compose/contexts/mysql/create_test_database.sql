@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS btc_tracker_testing;
+CREATE DATABASE IF NOT EXISTS wallet_php_testing;
 
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER
-ON btc_tracker_testing.*
-TO 'tracker_user'@'%';
+ON wallet_php_testing.*
+TO 'wallet'@'%';
