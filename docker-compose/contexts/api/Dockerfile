@@ -29,6 +29,10 @@ WORKDIR $APP_DIR
 # Apply ownership rules
 RUN mkdir -p $APP_DIR/storage && chmod -R guo+w ${APP_DIR}/storage
 
+
+# Apply ownership rules
+RUN mkdir -p $APP_DIR/storage && chmod -R guo+w ${APP_DIR}/storage
+
 # Expose port 9000 and start services
 EXPOSE 9000
 CMD ["php-fpm"]
