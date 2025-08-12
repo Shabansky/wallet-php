@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -49,5 +50,22 @@ class User extends Authenticatable
             'deleted_at' => 'datetime',
             'amount' => 'decimal:2',
         ];
+    }
+
+    public function sentTransactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'from_user_id');
+    }
+
+
+    public function receivedTransactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'to_user_id');
+    }
+
+    public function allTransactions()
+    {
+        return Transaction::where('from_user_id', $this->id)
+            ->orWhere('to_user_id', $this->id);
     }
 }
