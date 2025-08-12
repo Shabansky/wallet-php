@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\TransactionStatus;
 use App\TransactionType;
 
 class Transaction extends Model
@@ -17,6 +18,7 @@ class Transaction extends Model
 
     protected $casts = [
         'type' => TransactionType::class,
+        'status' => TransactionStatus::class,
         'amount' => 'decimal:2',
     ];
 
